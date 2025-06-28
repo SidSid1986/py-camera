@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsWindow</class>
+ <widget class="QWidget" name="SettingsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>822</width>
+    <height>545</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Settings</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 主窗口背景 */
+QMainWindow {
+    background-color: #F5F7FA;
+    font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
+}
+
+/* 左侧栏背景 */
+QTreeView, QTableWidget {
+    background-color: #E6ECF2;
+    border-right: 1px solid #CBD5E0;
+}
+
+/* 文字样式 */
+QLabel,QComboBox {
+    color: #2D3748;
+    font-size: 12px;
+}
+
+
+
+/* 左侧栏背景 */
+QTreeView, QTableWidget {
+    background-color: #E6ECF2;
+    border-right: 1px solid #CBD5E0;
+}
+
+/* 文字样式 */
+QLabel, QComboBox {
+    color: #2D3748;
+    font-size: 12px;
+}
+
+QLineEdit {
+    color: #727272;
+    font-size: 12px;
+    border: 1px solid #CBD5E0;
+    border-radius: 3px;
+    padding: 4px;
+  	background:#F0F0F0;
+   
+}
+
+/* 默认按钮 */
+QPushButton {
+    background-color: #3182CE;
+    color: white;
+    border: none;
+    border-radius: 4px;
+ 
+	padding:5px 10px;
+}
+
+/* 悬停效果 */
+QPushButton:hover {
+    background-color: #2C5282;
+}
+
+/* 按下效果 */
+QPushButton:pressed {
+    background-color: #1A365D;
+}
+
+/* 警告类按钮（如Reset） */
+QPushButton#resetButton {
+    background-color: #E53E3E;
+}
+QPushButton#resetButton:hover {
+    background-color: #C53030;
+}
+/* 输入框/下拉框 */
+ QComboBox {
+    border: 1px solid #CBD5E0;
+    border-radius: 3px;
+    padding: 4px;
+    background: white;
+}
+
+/* 当前值高亮 */
+/*QLineEdit[current=&quot;true&quot;] {
+    background-color: #EBF8FF;
+}*/
+QTableWidget {
+    border-radius: 6px;
+    background: white;
+    padding: 8px;
+    margin: 5px;
+}
+QGroupBox {
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+QTextEdit#commandWindow {
+    background-color: #EDF2F7;
+    border: 1px solid #3182CE;
+    font-family: monospace;
+}</string>
+  </property>
+  <widget class="QPushButton" name="pushButtonResetEncoder">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>420</y>
+     <width>104</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>Reset Encoder</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonResetPicCnt">
+   <property name="geometry">
+    <rect>
+     <x>528</x>
+     <y>420</y>
+     <width>104</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>Reset PicCnt</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonresetBaseTime">
+   <property name="geometry">
+    <rect>
+     <x>647</x>
+     <y>420</y>
+     <width>104</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0;</string>
+   </property>
+   <property name="text">
+    <string>Reset Basetime</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getExposureTime">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>228</x>
+     <y>87</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setExposureTime">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>87</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getAcquisitionLineTime">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>228</x>
+     <y>129</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setAcquisitionLineTime">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>129</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSyncOutDelay">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>214</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setHeightZ">
+   <property name="geometry">
+    <rect>
+     <x>557</x>
+     <y>40</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSyncOut">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>171</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSyncOutDelay">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>214</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getHeightZ">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>40</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSyncOut">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>171</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSignalWidthMin">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>344</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSignalStrengthMin">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>427</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setWidthX">
+   <property name="geometry">
+    <rect>
+     <x>557</x>
+     <y>123</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setOffsetX">
+   <property name="geometry">
+    <rect>
+     <x>557</x>
+     <y>164</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setStepX">
+   <property name="geometry">
+    <rect>
+     <x>557</x>
+     <y>205</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getOffsetZ">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>81</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getOffsetX">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>164</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSignalWidthMax">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>384</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getWidthX">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>123</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setOffsetZ">
+   <property name="geometry">
+    <rect>
+     <x>557</x>
+     <y>81</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getStepX">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>205</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSignalWidthMin">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>343</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSignalWidthMax">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>384</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSignalStrengthMin">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>427</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSendASCIICommand">
+   <property name="geometry">
+    <rect>
+     <x>717</x>
+     <y>322</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>设置</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="sendRawCommand">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>322</y>
+     <width>291</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="geometry">
+    <rect>
+     <x>157</x>
+     <y>10</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Set value</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
+   <property name="geometry">
+    <rect>
+     <x>245</x>
+     <y>10</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Current value</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonUpdate">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>457</y>
+     <width>104</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string> Update Values
+刷新当前值</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setSignalSelection">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>299</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_23">
+   <property name="geometry">
+    <rect>
+     <x>654</x>
+     <y>10</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Current value</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_24">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>10</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Set value</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="setTriggerSource">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>45</y>
+     <width>70</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>289</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Command Window: to put a new line, please press ENTER
+直接输入发送ASCII命令</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonResetSettings">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>460</y>
+     <width>104</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>Reset Settings</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditMaxMeasureRate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>247</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_17">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>247</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Max measurement rate [Hz]
+            最大测量频率</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>243</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>depends on the current ROI and the exposure time
+取决于当前 ROI 和曝光时间</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getTriggersource">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>228</x>
+     <y>45</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSignalEnable">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>257</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="getSignalSelection">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>299</y>
+     <width>110</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSetAcquisitionStart">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>376</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SetAcquisitionStart
+设置采集开始</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSetAcquisitionStop">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>376</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SetAcquisitionStop
+采集停止</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonStopResetStart">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>502</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0;</string>
+   </property>
+   <property name="text">
+    <string>Stop Acquistion - Reset Counters - Start Acquisition
+停止采集 - 重置计数器 - 开始采集</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSaveXML">
+   <property name="geometry">
+    <rect>
+     <x>647</x>
+     <y>460</y>
+     <width>104</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>Save XML</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonAcquisitionLineTime">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>124</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0; </string>
+   </property>
+   <property name="text">
+    <string>SetAcquisitionLineTime
+设置采集线时间[µs]</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonTriggerSource">
+   <property name="geometry">
+    <rect>
+     <x>3</x>
+     <y>40</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetTriggerSource
+设置触发源</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonExposureTime">
+   <property name="geometry">
+    <rect>
+     <x>3</x>
+     <y>82</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetExposureTime [µs]
+设置曝光时间</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSync">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>166</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetSyncOut [µs]
+设置同步输出</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSyncDelay">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>209</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetSyncOutDelay [µs]
+设置同步输出延迟</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignalEnable">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>252</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetSignalEnable
+设置信号启用</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignalSelection">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>294</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetSignalSelection
+设置信号选择</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignalWidthMin">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>337</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0;</string>
+   </property>
+   <property name="text">
+    <string>SetSignalWidthMin[px]
+设置信号宽度最小值</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignalWidthMax">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>379</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0;</string>
+   </property>
+   <property name="text">
+    <string>SetSignalWidthMax[px]
+设置信号宽度最大值</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignalStrengthMin">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>422</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetSignalStrengthMin
+设置最小信号强度</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonHeightZ">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>34</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetROI1HeightZ</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonStepX">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>202</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetROI1StepX</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonOffsetX">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>160</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetROI1OffsetX</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonWidthX">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>118</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetROI1WidthX</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonOffsetZ">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>76</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* 在 QLabel 或 QPushButton 中换行 */
+QLabel, QPushButton {
+    /* 强制文本换行（\A 表示换行符） */
+    qproperty-wordWrap: true;  /* 允许自动换行（可选） */
+}
+
+QLabel {
+    qproperty-alignment: 'AlignCenter';  /* 文本居中 */
+    white-space: pre;                   /* 保留换行符（关键！） */
+    font-size: 14px;
+    color: #333;
+}</string>
+   </property>
+   <property name="text">
+    <string>SetROI1OffsetZ</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSignalEnable">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>260</y>
+     <width>69</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>setTriggerSource</tabstop>
+  <tabstop>setExposureTime</tabstop>
+  <tabstop>setAcquisitionLineTime</tabstop>
+  <tabstop>setSyncOut</tabstop>
+  <tabstop>setSyncOutDelay</tabstop>
+  <tabstop>setSignalSelection</tabstop>
+  <tabstop>setSignalWidthMin</tabstop>
+  <tabstop>setSignalWidthMax</tabstop>
+  <tabstop>setSignalStrengthMin</tabstop>
+  <tabstop>setHeightZ</tabstop>
+  <tabstop>setOffsetZ</tabstop>
+  <tabstop>setWidthX</tabstop>
+  <tabstop>setOffsetX</tabstop>
+  <tabstop>setStepX</tabstop>
+  <tabstop>sendRawCommand</tabstop>
+  <tabstop>pushButtonSetAcquisitionStop</tabstop>
+  <tabstop>pushButtonSetAcquisitionStart</tabstop>
+  <tabstop>pushButtonResetEncoder</tabstop>
+  <tabstop>pushButtonResetPicCnt</tabstop>
+  <tabstop>pushButtonresetBaseTime</tabstop>
+  <tabstop>pushButtonResetSettings</tabstop>
+  <tabstop>pushButtonUpdate</tabstop>
+  <tabstop>pushButtonStopResetStart</tabstop>
+  <tabstop>getTriggersource</tabstop>
+  <tabstop>getExposureTime</tabstop>
+  <tabstop>getAcquisitionLineTime</tabstop>
+  <tabstop>getSyncOut</tabstop>
+  <tabstop>getSyncOutDelay</tabstop>
+  <tabstop>getSignalEnable</tabstop>
+  <tabstop>getSignalSelection</tabstop>
+  <tabstop>getSignalWidthMin</tabstop>
+  <tabstop>getSignalWidthMax</tabstop>
+  <tabstop>getSignalStrengthMin</tabstop>
+  <tabstop>getHeightZ</tabstop>
+  <tabstop>getOffsetZ</tabstop>
+  <tabstop>getWidthX</tabstop>
+  <tabstop>getOffsetX</tabstop>
+  <tabstop>getStepX</tabstop>
+  <tabstop>lineEditMaxMeasureRate</tabstop>
+  <tabstop>pushButtonSendASCIICommand</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
